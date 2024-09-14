@@ -29,6 +29,7 @@ export default async function handler(req, res) {
         path: '/',
       }));
 
+      // Send success response
       res.status(200).json({ success: true, message: 'Logged in successfully' });
     } catch (error) {
       res.status(400).json({ success: false, error: error.message });

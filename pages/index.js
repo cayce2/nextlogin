@@ -17,7 +17,7 @@ export default function Home() {
       if (data.success) {
         toast.success(isLogin ? 'Logged in successfully!' : 'Registered successfully!');
         if (isLogin) {
-          console.log('Login successful, redirecting to dashboard...');
+          // Redirect to dashboard after successful login
           router.push('/dashboard');
         }
       }
@@ -25,7 +25,6 @@ export default function Home() {
       toast.error(error.response?.data?.error || 'An error occurred');
     }
   };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
