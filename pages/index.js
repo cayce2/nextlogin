@@ -1,12 +1,13 @@
-// pages/index.js
 import { useState } from 'react';
 import axios from 'axios';
 import { toast, Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,8 +17,8 @@ export default function Home() {
       if (data.success) {
         toast.success(isLogin ? 'Logged in successfully!' : 'Registered successfully!');
         if (isLogin) {
-          // Store the token in localStorage or a secure cookie
-          localStorage.setItem('token', data.token);
+          console.log('Login successful, redirecting to dashboard...');
+          router.push('/dashboard');
         }
       }
     } catch (error) {
