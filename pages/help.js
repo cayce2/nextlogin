@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import Layout from '../components/layout'; 
 
-export default function Help() {
+export default function Help (){
   const [username, setUsername] = useState('');
   const router = useRouter();
 
@@ -19,7 +19,7 @@ export default function Help() {
 
     fetchUserData();
   }, []);
-  
+
   return (
     <Layout username={username}>
       <div className="max-w-7xl mx-auto p-6">
