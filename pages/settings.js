@@ -2,7 +2,21 @@ import React from 'react';
 import Layout from '../components/layout'; // Adjust the import path if necessary
 
 export default function Settings() {
-  const username = 'User'; // Replace with actual username logic
+  const [username, setUsername] = useState('');
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const { data } = await axios.get('/api/user');
+        setUsername(data.username);
+      } catch (error) {
+        router.push('/');
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   return (
     <Layout username={username}>
