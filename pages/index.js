@@ -6,11 +6,16 @@ import { useRouter } from 'next/router';
 export default function Home() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isLogin && password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
     try {
       const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
       const { data } = await axios.post(endpoint, { username, password });
@@ -25,6 +30,7 @@ export default function Home() {
       toast.error(error.response?.data?.error || 'An error occurred');
     }
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -60,12 +66,29 @@ export default function Home() {
                 name="password"
                 type="password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            {!isLogin && (
+              <div>
+                <label htmlFor="confirmPassword" className="sr-only">
+                  Confirm Password
+                </label>
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
+            )}
           </div>
 
           <div>
@@ -80,7 +103,10 @@ export default function Home() {
         <div className="text-center">
           <button
             className="text-indigo-600 hover:text-indigo-500"
-            onClick={() => setIsLogin(!isLogin)}
+            onClick={() => {
+              setIsLogin(!isLogin);
+              setConfirmPassword('');
+            }}
           >
             {isLogin ? 'Need an account? Sign up' : 'Already have an account? Sign in'}
           </button>
