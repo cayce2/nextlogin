@@ -1,22 +1,10 @@
-import React from 'react';
-import Layout from '../components/layout'; // Adjust the import path if necessary
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import Layout from '../components/layout'; 
 
 export default function Settings() {
-  const [username, setUsername] = useState('');
-  const router = useRouter();
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const { data } = await axios.get('/api/user');
-        setUsername(data.username);
-      } catch (error) {
-        router.push('/');
-      }
-    };
-
-    fetchUserData();
-  }, []);
+  
 
   return (
     <Layout username={username}>
