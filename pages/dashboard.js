@@ -38,15 +38,15 @@ const Sidebar = ({ isOpen, toggleSidebar, isExpanded, toggleExpanded, username, 
         </div>
         <nav className="flex-1 overflow-y-auto">
           <div className="px-4 py-4 space-y-1">
-            <a href="#" className={`flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-900 bg-gray-100 group ${isExpanded ? '' : 'justify-center'}`}>
+            <a href="/" className={`flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-900 bg-gray-100 group ${isExpanded ? '' : 'justify-center'}`}>
               <Home className="h-6 w-6 text-gray-500" />
               {isExpanded && <span className="ml-3">Home</span>}
             </a>
-            <a href="#" className={`flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 group ${isExpanded ? '' : 'justify-center'}`}>
+            <a href="/settings" className={`flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 group ${isExpanded ? '' : 'justify-center'}`}>
               <Settings className="h-6 w-6 text-gray-400 group-hover:text-gray-500" />
               {isExpanded && <span className="ml-3">Settings</span>}
             </a>
-            <a href="#" className={`flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 group ${isExpanded ? '' : 'justify-center'}`}>
+            <a href="/help" className={`flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 group ${isExpanded ? '' : 'justify-center'}`}>
               <HelpCircle className="h-6 w-6 text-gray-400 group-hover:text-gray-500" />
               {isExpanded && <span className="ml-3">Help</span>}
             </a>
