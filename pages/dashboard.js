@@ -26,7 +26,7 @@ export default function Dashboard() {
         <div className="bg-white shadow-sm rounded-lg p-6">
           <h1 className="text-2xl font-semibold text-gray-900">Dashboard Content</h1>
           <p className="mt-2 text-gray-600">This is where your main dashboard content would go.</p>
-        </div>
+        </div>       
       </div>
     </Layout>
   );
