@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { X, Home, Settings, HelpCircle, ChevronLeft, ChevronRight, LogOut } from 'lucide-react';
+import { X, Home, Settings, HelpCircle, ChevronLeft, ChevronRight, LogOut, Users } from 'lucide-react';
 import PropTypes from 'prop-types';
 import { ErrorBoundary } from 'react-error-boundary';
 import axios from 'axios';
@@ -68,6 +68,7 @@ const Sidebar = ({ isOpen, toggleSidebar, isExpanded, toggleExpanded, username }
           <div className="px-4 py-4 space-y-1">
             <NavLink href="/dashboard" icon={Home}>Home</NavLink>
             <NavLink href="/settings" icon={Settings}>Settings</NavLink>
+            <NavLink href="/users" icon={Users}>Users</NavLink>
             <NavLink href="/help" icon={HelpCircle}>Help</NavLink>
           </div>
         </nav>
